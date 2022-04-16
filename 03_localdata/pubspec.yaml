@@ -19,7 +19,9 @@ dependencies:
   # xxx
   cupertino_icons: ^1.0.2
   # トースト表示用
-  fluttertoast: ^8.0.9
+  # fluttertoast: ^8.0.9
+  # アプリ内データ保存用
+  shared_preferences: ^2.0.13
 
 # xxx
 dev_dependencies:

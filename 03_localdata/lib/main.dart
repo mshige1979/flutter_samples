@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'トーストを出すサンプル'),
+      home: const MyHomePage(title: 'アプリデータの読み込み、保存を行う'),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ホーム画面
 class MyHomePage extends StatefulWidget {
@@ -13,7 +13,29 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   // テキストエリア用
-  String _text = '';
+  TextEditingController emailController = new TextEditingController(text: "");
+
+  // ロード処理を行い、TextFieldへ反映
+  void _load() async {
+    debugPrint("_load called");
+    // データを保存
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? _text = prefs.getString('data');
+    emailController.text = _text != null ? _text : "";
+  }
+
+  // TextFieldの内容を保存
+  void _save(String s) async {
+    debugPrint("_save called");
+    // データを保存
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('data', s);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              '下の＋ボタンを押したらトーストが出ます。',
+              '下のLoad、Saveボタンをデータを取得、保存する。',
             ),
             Container(
              child: Padding(
                padding: EdgeInsets.all(10),
                // テキスト入力
                child: new TextField(
+                 controller: emailController,
                  // 活性
                  enabled: true,
                  // キーボードタイプ
@@ -43,29 +66,45 @@ class _MyHomePageState extends State<MyHomePage> {
                  maxLength: 10,
                  // １行
                  maxLines:1 ,
-                 // 入力時のイベント
-                 onChanged: (String e) {
-                   setState(() {
-                     _text = e;
-                   });
-                 },
+
                ),
              ),
+            ),
+            Container(
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: OutlinedButton(
+                          onPressed: () {
+                            debugPrint("load onPressed");
+                            _load();
+                          },
+                          child: Text('Load'),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: OutlinedButton(
+                          onPressed: () {
+                            debugPrint("save onPressed");
+                            _save(emailController.text);
+                          },
+                          child: Text('Save'),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              )
             )
           ],
         ),
-      ),
-      // フロートボタン用
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Fluttertoast.showToast(
-            // 表示メッセージ
-            msg: _text.length <= 0 ? "メッセージなし" : _text,
-            // 表示位置（androidではデフォルトBOTTOM、TOPは効く、それ以外はWeb版のみかも）
-            gravity: ToastGravity.TOP,
-          );
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }
