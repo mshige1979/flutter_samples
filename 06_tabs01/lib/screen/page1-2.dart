@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Page1 extends StatefulWidget {
-  const Page1({Key? key, required this.title}) : super(key: key);
+class Page1_2 extends StatefulWidget {
+  const Page1_2({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<Page1> createState() => _Page1State();
+  State<Page1_2> createState() => _Page1_2State();
 }
 
-class _Page1State extends State<Page1> {
+class _Page1_2State extends State<Page1_2> {
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _Page1State extends State<Page1> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'Page1',
+              'Page1_2',
             ),
           ],
         ),
