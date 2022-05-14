@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 /**
  * お知らせ詳細ページ
  */
-class NoticePage extends StatefulWidget {
-  const NoticePage({Key? key}) : super(key: key);
+class NoticeDetailPage extends StatefulWidget {
+  const NoticeDetailPage({Key? key}) : super(key: key);
 
   @override
-  State<NoticePage> createState() => _NoticePageState();
+  State<NoticeDetailPage> createState() => _NoticeDetailPageState();
 }
 
-class _NoticePageState extends State<NoticePage> {
+class _NoticeDetailPageState extends State<NoticeDetailPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,15 @@ class _NoticePageState extends State<NoticePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+              style: OutlinedButton.styleFrom(),
+              onPressed: () {
+                debugPrint("load onPressed");
+                // 戻る
+                Navigator.of(context).pop();
+              },
+              child: Text('お知らせへ'),
+            ),
           ],
         ),
       ),

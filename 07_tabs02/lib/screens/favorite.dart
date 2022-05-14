@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'favorite_detail.dart';
+
 /**
  * お気に入りページ
  */
@@ -22,6 +24,21 @@ class _FavoritePageState extends State<FavoritePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+              style: OutlinedButton.styleFrom(),
+              onPressed: () {
+                debugPrint("load onPressed");
+                // お気に入り詳細画面へ遷移
+                Navigator.of(context).push<Widget>(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return FavoriteDetailPage();
+                    },
+                  ),
+                );
+              },
+              child: Text('お気に入り詳細へ'),
+            ),
           ],
         ),
       ),

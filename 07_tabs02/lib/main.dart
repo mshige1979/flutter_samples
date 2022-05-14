@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tabs02/screens/home.dart';
-import 'package:tabs02/screens/init.dart';
-import 'package:tabs02/screens/login.dart';
+
+import 'screens/init.dart';
+import 'screens/login.dart';
+import 'screens/tabs.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -25,9 +27,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/": (_) => const InitPage(),
         "/login": (_) => const LoginPage(),
-        "/home": (_) => const HomePage()
+        "/home": (_) => const TabsPage()
       },
-
     );
   }
 }

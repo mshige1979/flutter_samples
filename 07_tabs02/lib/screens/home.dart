@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'notice.dart';
+
 /**
  * ホームページ
  */
@@ -22,6 +24,22 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+              style: OutlinedButton.styleFrom(),
+              onPressed: () {
+                debugPrint("load onPressed");
+                // お知らせ画面へ遷移
+                Navigator.of(context).push<Widget>(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return NoticePage();
+                    },
+                  ),
+                );
+
+              },
+              child: Text('お知らせへ'),
+            ),
           ],
         ),
       ),

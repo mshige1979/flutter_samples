@@ -22,6 +22,15 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ElevatedButton(
+              style: OutlinedButton.styleFrom(),
+              onPressed: () {
+                debugPrint("load onPressed");
+                // 戻る
+                Navigator.of(context).pop();
+              },
+              child: Text('戻る'),
+            ),
           ],
         ),
       ),
