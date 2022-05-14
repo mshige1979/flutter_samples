@@ -1,5 +1,5 @@
 enum TabItem {
   home,
-  timeline,
-  config,
+  favo,
+  setting,
 }

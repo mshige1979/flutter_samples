@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tabs02/screens/favorite.dart';
-import 'package:tabs02/screens/home.dart';
-import 'package:tabs02/screens/setting.dart';
 
-/**
- * Home画面のタブ
- */
+import '../constants.dart';
+import '../widgets/bottom_navigation.dart';
+import '../widgets/tab_navigator.dart';
+
+/// Home画面のタブ
 class TabsPage extends StatefulWidget {
   const TabsPage({Key? key}) : super(key: key);
 
@@ -15,56 +14,70 @@ class TabsPage extends StatefulWidget {
 
 class _TabsPageState extends State<TabsPage> {
 
-  int _currentIndex = 0;
+  // 指定タブインデックス
+  TabItem _currentTab = TabItem.home;
+  // タブのナビゲーションのMAP
+  final Map<TabItem, GlobalKey<NavigatorState>> _navigatorKeys = {
+    TabItem.home: GlobalKey<NavigatorState>(),
+    TabItem.favo: GlobalKey<NavigatorState>(),
+    TabItem.setting: GlobalKey<NavigatorState>(),
+  };
 
-  final tabs = <Widget>[
-    HomePage(),
-    FavoritePage(),
-    SettingPage(),
-  ];
-
-  final items = <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      label: 'ホーム',
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.timeline),
-      label: "Favo",
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.settings),
-      label: '設定',
-    ),
-  ];
-
+  // 画面構成
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(
           children: <Widget>[
-            IndexedStack(
-              index: _currentIndex,
-              children: tabs,
+            _buildTabItem(
+              TabItem.home,
+              '/home',
+            ),
+            _buildTabItem(
+              TabItem.favo,
+              '/favo',
+            ),
+            _buildTabItem(
+              TabItem.setting,
+              '/setting',
             ),
           ],
         ),
-      bottomNavigationBar: _buildBttomNavigator(context)
+      bottomNavigationBar: BottomNavigation(
+        key: UniqueKey(),
+        currentTab: _currentTab,
+        onSelect: onSelect,
+      )
     );
   }
 
-  Widget _buildBttomNavigator(BuildContext context) {
-    return BottomNavigationBar(
-      items: items,
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        if (_currentIndex != index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        }
-      },
+  // 各タブコンテンツの表示制御
+  Widget _buildTabItem(
+      TabItem tabItem,
+      String root,
+      ) {
+    return Offstage(
+      // 選択対象のみ表示する
+      offstage: _currentTab != tabItem,
+      child: TabNavigator(
+        navigationKey: _navigatorKeys[tabItem],
+        tabItem: tabItem,
+        routerName: root,
+      ),
     );
   }
+
+  // ボトムタブをタップした際の挙動
+  void onSelect(TabItem tabItem) {
+    if (_currentTab == tabItem) {
+      _navigatorKeys[tabItem]?.currentState?.popUntil((route) => route.isFirst);
+    } else  {
+      // 選択タブを更新
+      setState(() {
+        _currentTab = tabItem;
+      });
+    }
+  }
+
 }
 
