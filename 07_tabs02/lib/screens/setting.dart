@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tabs02/screens/login.dart';
 import 'profile.dart';
 import '../services/navigation.dart';
+import '../widgets/app_bar_title.dart';
+
 /**
  * 設定ページ
  */
@@ -18,7 +20,7 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('設定'),
+          title: AppBarTitle(title: "設定")
       ),
       body: Center(
         child: Column(

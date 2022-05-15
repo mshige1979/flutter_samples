@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_bar_title.dart';
 import 'notice.dart';
 
 /**
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ホーム'),
+        title: AppBarTitle(title: "ホーム")
       ),
       body: Center(
         child: Column(
