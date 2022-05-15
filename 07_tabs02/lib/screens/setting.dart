@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tabs02/screens/login.dart';
+import '../widgets/app_bar_icon.dart';
 import 'profile.dart';
 import '../services/navigation.dart';
 import '../widgets/app_bar_title.dart';
@@ -20,7 +21,8 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: AppBarTitle(title: "設定")
+          title: AppBarTitle(title: "設定"),
+          leading: AppBarIcon(),
       ),
       body: Center(
         child: Column(

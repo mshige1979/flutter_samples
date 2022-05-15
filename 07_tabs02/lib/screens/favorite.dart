@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_bar_icon.dart';
 import 'favorite_detail.dart';
 import '../widgets/app_bar_title.dart';
 
@@ -20,6 +21,7 @@ class _FavoritePageState extends State<FavoritePage> {
     return Scaffold(
       appBar: AppBar(
           title: AppBarTitle(title: "お気に入り"),
+          leading: AppBarIcon(),
       ),
       body: Center(
         child: Column(
