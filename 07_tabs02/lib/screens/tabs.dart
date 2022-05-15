@@ -76,6 +76,7 @@ class _TabsPageState extends State<TabsPage> {
       setState(() {
         _currentTab = tabItem;
       });
+      _navigatorKeys[tabItem]?.currentState?.popUntil((route) => route.isFirst);
     }
   }
 
