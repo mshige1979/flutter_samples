@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tabs02/screens/login.dart';
 import 'profile.dart';
-
+import '../services/navigation.dart';
 /**
  * 設定ページ
  */
@@ -42,6 +43,19 @@ class _SettingPageState extends State<SettingPage> {
               style: OutlinedButton.styleFrom(),
               onPressed: () {
                 debugPrint("load onPressed");
+                var _context = Navigation.getInstance().rootNavigatorKey.currentState?.context;
+                if (_context != null) {
+                  //Navigator.of(_context!).pushReplacementNamed("/login");
+                  //Navigator.popUntil(_context!, ModalRoute.withName("/login"));
+                  //Navigator.popUntil(_context!, ModalRoute.withName("/login"));
+                  //Navigator.of(_context!).restorablePopAndPushNamed("/login");
+                  //Navigator.of(_context!).pop();
+                  Navigator.pushReplacement(_context, MaterialPageRoute(
+                    builder: (context) => LoginPage(),
+                    //以下を追加
+                    fullscreenDialog: true,
+                  ));
+                }
               },
               child: Text('ログアウト'),
             ),

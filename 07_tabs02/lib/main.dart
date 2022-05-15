@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'screens/init.dart';
 import 'screens/login.dart';
 import 'screens/tabs.dart';
+import 'services/navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         "/login": (_) => const LoginPage(),
         "/home": (_) => const TabsPage()
       },
+      navigatorKey: Navigation.getInstance().rootNavigatorKey,
     );
   }
 }
