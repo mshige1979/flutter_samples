@@ -19,9 +19,6 @@ class _LoginPageState extends State<LoginPage> {
     final Size _size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('ログイン'),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
