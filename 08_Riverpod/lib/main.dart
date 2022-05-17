@@ -6,7 +6,7 @@ import 'providers/app_service.dart';
 void main() {
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => Counter()),
+      ChangeNotifierProvider(create: (_) => AppService()),
     ],
     child: const MyApp(),
   ));
@@ -52,14 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '${context.watch<Counter>().count}',
+              '${context.watch<AppService>().count}',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<Counter>().increment(),
+        onPressed: () => context.read<AppService>().increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
