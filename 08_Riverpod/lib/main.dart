@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'providers/app_service.dart';
+
 void main() {
   runApp(MultiProvider(
     providers: [
@@ -8,17 +10,6 @@ void main() {
     ],
     child: const MyApp(),
   ));
-}
-
-class Counter with ChangeNotifier {
-  int _count = 0;
-
-  int get count => _count;
-
-  void increment() {
-    _count++;
-    notifyListeners();
-  }
 }
 
 class MyApp extends StatelessWidget {
