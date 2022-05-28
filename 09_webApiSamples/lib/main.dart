@@ -3,7 +3,7 @@ import 'package:shelf/shelf_io.dart' as shelf_io;
 import 'package:http/http.dart';
 
 import "server.dart";
-import "api_client.dart";
+import 'service/api_client.dart';
 
 void main() {
   runApp(MyApp());

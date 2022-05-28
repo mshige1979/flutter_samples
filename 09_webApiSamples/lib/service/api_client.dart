@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import './service/api/api_client_base.dart';
+import 'api/api_client_base.dart';
 import 'dart:io';
 
 class ApiClient implements ApiClientBase {
@@ -35,14 +35,14 @@ class ApiClient implements ApiClientBase {
 
   // ベースURLをURIで取得
   @protected
-  Uri getBaseUrl() {
+  Uri _getBaseUrl() {
     return Uri.parse(baseUrl);
   }
 
   // リクエストURLを生成
   @protected
-  Uri createUrl(String path, {Map<String, dynamic>? queryParameters}) {
-    final endpoint = getBaseUrl();
+  Uri _createUrl(String path, {Map<String, dynamic>? queryParameters}) {
+    final endpoint = _getBaseUrl();
     return Uri(
         scheme: endpoint.scheme,
         host: endpoint.host,
@@ -59,9 +59,7 @@ class ApiClient implements ApiClientBase {
     Map<String, dynamic>? queryParameters,
   }) async {
     // URL生成
-    Uri url = createUrl(endpoint, queryParameters: queryParameters);
-    print("url: ${url.toString()}");
-
+    Uri url = _createUrl(endpoint, queryParameters: queryParameters);
     // ヘッダーを取得
     final headerParams = getHeaders(headers);
     // GET
@@ -77,7 +75,7 @@ class ApiClient implements ApiClientBase {
     Map<String, dynamic>? body,
   }) async {
     // URL生成
-    Uri url = createUrl(endpoint);
+    Uri url = _createUrl(endpoint);
     // ヘッダーを取得
     final headerParams = getHeaders(headers);
     final jsonBody = jsonEncode(body);
@@ -95,7 +93,7 @@ class ApiClient implements ApiClientBase {
     Map<String, dynamic>? body,
   }) async {
     // URL生成
-    Uri url = createUrl(endpoint);
+    Uri url = _createUrl(endpoint);
     // ヘッダーを取得
     final headerParams = getHeaders(headers);
     final jsonBody = jsonEncode(body);
@@ -113,9 +111,7 @@ class ApiClient implements ApiClientBase {
     Map<String, dynamic>? queryParameters,
   }) async {
     // URL生成
-    Uri url = createUrl(endpoint, queryParameters: queryParameters);
-    print("url: ${url.toString()}");
-
+    Uri url = _createUrl(endpoint, queryParameters: queryParameters);
     // ヘッダーを取得
     final headerParams = getHeaders(headers);
     // GET

@@ -15,6 +15,7 @@ class _Api {
     return Response.ok('[]');
   }
 
+  // テスト用の仮API
   Router get router {
     final router = Router();
     router.get('/messages', _messages);
