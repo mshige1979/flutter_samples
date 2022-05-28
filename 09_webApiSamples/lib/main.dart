@@ -78,12 +78,25 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   final api = ApiClient();
                   final res = await api.get("/api/messages",
-                          headers: <String, String>{"api-key": "aaaaaa"})
-                      as Response;
+                      headers: <String, String>{"api-key": "aaaaaa"})
+                  as Response;
                   print("status: ${res.statusCode}");
                   print("body: ${res.body}");
                 },
                 child: Text('GET /api/messages'),
+              ),
+            ),
+            Container(
+              child: ElevatedButton(
+                onPressed: () async {
+                  final api = ApiClient();
+                  final res = await api.get("/api/users",
+                      headers: <String, String>{"api-key": "aaaaaa"})
+                  as Response;
+                  print("status: ${res.statusCode}");
+                  print("body: ${res.body}");
+                },
+                child: Text('GET /api/users'),
               ),
             ),
             Container(

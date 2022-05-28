@@ -1,4 +1,5 @@
 import 'dart:async' show Future;
+import 'dart:convert';
 import 'package:shelf_router/shelf_router.dart';
 import 'package:shelf/shelf.dart';
 
@@ -18,10 +19,35 @@ class _Api {
   // テスト用の仮API
   Router get router {
     final router = Router();
-    router.get('/messages', _messages);
-    router.get('/messages/', _messages);
+    router.get('/messages', (Request request) async {
+      return Response.ok(
+        json.encode({
+          "status": "0",
+          "list": ["aaaaaaaaaaaaaaa", "bbbbbbbb", "cccccccc"]
+        }),
+        headers: {'content-type': 'application/json'},
+      );
+    });
+    router.get('/users', (Request request) async {
+      return Response.ok(
+        json.encode({
+          "status": "0",
+          "list": [
+            {"id": 1, "name": "aaaa"},
+            {"id": 2, "name": "cccc"}
+          ]
+        }),
+        headers: {'content-type': 'application/json'},
+      );
+    });
     router.get('/user/<user>', (Request request, String user) {
-      return Response.ok('hello $user');
+      return Response.ok(
+        json.encode({
+          "status": "0",
+          "user": {"id": 1, "name": "aaaa"}
+        }),
+        headers: {'content-type': 'application/json'},
+      );
     });
     router.post('/user', (Request request) {
       request.readAsString().then((String body) {
