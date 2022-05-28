@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'users.dart';
+part of 'user.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,93 +14,103 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ApiUsers _$ApiUsersFromJson(Map<String, dynamic> json) {
-  return _ApiUsers.fromJson(json);
+ApiUser _$ApiUserFromJson(Map<String, dynamic> json) {
+  return _ApiUser.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ApiUsers {
+mixin _$ApiUser {
   @JsonKey(name: 'status')
   String get status => throw _privateConstructorUsedError;
-  @JsonKey(name: 'list')
-  List<User>? get list => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user')
+  User get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ApiUsersCopyWith<ApiUsers> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ApiUserCopyWith<ApiUser> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ApiUsersCopyWith<$Res> {
-  factory $ApiUsersCopyWith(ApiUsers value, $Res Function(ApiUsers) then) =
-      _$ApiUsersCopyWithImpl<$Res>;
+abstract class $ApiUserCopyWith<$Res> {
+  factory $ApiUserCopyWith(ApiUser value, $Res Function(ApiUser) then) =
+      _$ApiUserCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'status') String status,
-      @JsonKey(name: 'list') List<User>? list});
+      @JsonKey(name: 'user') User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class _$ApiUsersCopyWithImpl<$Res> implements $ApiUsersCopyWith<$Res> {
-  _$ApiUsersCopyWithImpl(this._value, this._then);
+class _$ApiUserCopyWithImpl<$Res> implements $ApiUserCopyWith<$Res> {
+  _$ApiUserCopyWithImpl(this._value, this._then);
 
-  final ApiUsers _value;
+  final ApiUser _value;
   // ignore: unused_field
-  final $Res Function(ApiUsers) _then;
+  final $Res Function(ApiUser) _then;
 
   @override
   $Res call({
     Object? status = freezed,
-    Object? list = freezed,
+    Object? user = freezed,
   }) {
     return _then(_value.copyWith(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      list: list == freezed
-          ? _value.list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$_ApiUsersCopyWith<$Res> implements $ApiUsersCopyWith<$Res> {
-  factory _$$_ApiUsersCopyWith(
-          _$_ApiUsers value, $Res Function(_$_ApiUsers) then) =
-      __$$_ApiUsersCopyWithImpl<$Res>;
+abstract class _$$_ApiUserCopyWith<$Res> implements $ApiUserCopyWith<$Res> {
+  factory _$$_ApiUserCopyWith(
+          _$_ApiUser value, $Res Function(_$_ApiUser) then) =
+      __$$_ApiUserCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'status') String status,
-      @JsonKey(name: 'list') List<User>? list});
+      @JsonKey(name: 'user') User user});
+
+  @override
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class __$$_ApiUsersCopyWithImpl<$Res> extends _$ApiUsersCopyWithImpl<$Res>
-    implements _$$_ApiUsersCopyWith<$Res> {
-  __$$_ApiUsersCopyWithImpl(
-      _$_ApiUsers _value, $Res Function(_$_ApiUsers) _then)
-      : super(_value, (v) => _then(v as _$_ApiUsers));
+class __$$_ApiUserCopyWithImpl<$Res> extends _$ApiUserCopyWithImpl<$Res>
+    implements _$$_ApiUserCopyWith<$Res> {
+  __$$_ApiUserCopyWithImpl(_$_ApiUser _value, $Res Function(_$_ApiUser) _then)
+      : super(_value, (v) => _then(v as _$_ApiUser));
 
   @override
-  _$_ApiUsers get _value => super._value as _$_ApiUsers;
+  _$_ApiUser get _value => super._value as _$_ApiUser;
 
   @override
   $Res call({
     Object? status = freezed,
-    Object? list = freezed,
+    Object? user = freezed,
   }) {
-    return _then(_$_ApiUsers(
+    return _then(_$_ApiUser(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      list: list == freezed
-          ? _value._list
-          : list // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 }
@@ -108,49 +118,42 @@ class __$$_ApiUsersCopyWithImpl<$Res> extends _$ApiUsersCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_ApiUsers with DiagnosticableTreeMixin implements _ApiUsers {
-  const _$_ApiUsers(
+class _$_ApiUser with DiagnosticableTreeMixin implements _ApiUser {
+  const _$_ApiUser(
       {@JsonKey(name: 'status') required this.status,
-      @JsonKey(name: 'list') final List<User>? list})
-      : _list = list;
+      @JsonKey(name: 'user') required this.user});
 
-  factory _$_ApiUsers.fromJson(Map<String, dynamic> json) =>
-      _$$_ApiUsersFromJson(json);
+  factory _$_ApiUser.fromJson(Map<String, dynamic> json) =>
+      _$$_ApiUserFromJson(json);
 
   @override
   @JsonKey(name: 'status')
   final String status;
-  final List<User>? _list;
   @override
-  @JsonKey(name: 'list')
-  List<User>? get list {
-    final value = _list;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  @JsonKey(name: 'user')
+  final User user;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ApiUsers(status: $status, list: $list)';
+    return 'ApiUser(status: $status, user: $user)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ApiUsers'))
+      ..add(DiagnosticsProperty('type', 'ApiUser'))
       ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('list', list));
+      ..add(DiagnosticsProperty('user', user));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ApiUsers &&
+            other is _$_ApiUser &&
             const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other._list, _list));
+            const DeepCollectionEquality().equals(other.user, user));
   }
 
   @JsonKey(ignore: true)
@@ -158,34 +161,34 @@ class _$_ApiUsers with DiagnosticableTreeMixin implements _ApiUsers {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(_list));
+      const DeepCollectionEquality().hash(user));
 
   @JsonKey(ignore: true)
   @override
-  _$$_ApiUsersCopyWith<_$_ApiUsers> get copyWith =>
-      __$$_ApiUsersCopyWithImpl<_$_ApiUsers>(this, _$identity);
+  _$$_ApiUserCopyWith<_$_ApiUser> get copyWith =>
+      __$$_ApiUserCopyWithImpl<_$_ApiUser>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ApiUsersToJson(this);
+    return _$$_ApiUserToJson(this);
   }
 }
 
-abstract class _ApiUsers implements ApiUsers {
-  const factory _ApiUsers(
+abstract class _ApiUser implements ApiUser {
+  const factory _ApiUser(
       {@JsonKey(name: 'status') required final String status,
-      @JsonKey(name: 'list') final List<User>? list}) = _$_ApiUsers;
+      @JsonKey(name: 'user') required final User user}) = _$_ApiUser;
 
-  factory _ApiUsers.fromJson(Map<String, dynamic> json) = _$_ApiUsers.fromJson;
+  factory _ApiUser.fromJson(Map<String, dynamic> json) = _$_ApiUser.fromJson;
 
   @override
   @JsonKey(name: 'status')
   String get status => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'list')
-  List<User>? get list => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user')
+  User get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_ApiUsersCopyWith<_$_ApiUsers> get copyWith =>
+  _$$_ApiUserCopyWith<_$_ApiUser> get copyWith =>
       throw _privateConstructorUsedError;
 }

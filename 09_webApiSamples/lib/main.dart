@@ -99,12 +99,10 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               child: ElevatedButton(
                 onPressed: () async {
-                  final api = ApiClient();
-                  final res = await api.get("/api/user/1",
-                          headers: <String, String>{"api-key": "aaaaaa"})
-                      as Response;
-                  print("status: ${res.statusCode}");
-                  print("body: ${res.body}");
+                  final api = Api();
+                  final res = await api.getUser(1);
+                  print(res.status);
+                  print(res.user);
                 },
                 child: Text('GET /api/user/1'),
               ),

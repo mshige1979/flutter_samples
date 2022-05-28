@@ -1,19 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'messages.dart';
+part of 'user.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiMessages _$$_ApiMessagesFromJson(Map<String, dynamic> json) =>
-    _$_ApiMessages(
+_$_ApiUser _$$_ApiUserFromJson(Map<String, dynamic> json) => _$_ApiUser(
       status: json['status'] as String,
-      list: (json['list'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      user: User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ApiMessagesToJson(_$_ApiMessages instance) =>
+Map<String, dynamic> _$$_ApiUserToJson(_$_ApiUser instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'list': instance.list,
+      'user': instance.user.toJson(),
     };

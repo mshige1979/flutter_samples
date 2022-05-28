@@ -5,17 +5,17 @@ part 'messages.freezed.dart';
 part 'messages.g.dart';
 
 @freezed
-class Messages with _$Messages {
+class ApiMessages with _$ApiMessages {
   @JsonSerializable(explicitToJson: true)
-  const factory Messages({
+  const factory ApiMessages({
     // ステータス
     @JsonKey(name: 'status')
     required String status,
     // メッセージ一覧
     @JsonKey(name: 'list')
     List<String>? list
-  }) = _Messages;
+  }) = _ApiMessages;
 
-  factory Messages.fromJson(Map<String, dynamic> json) =>
-      _$MessagesFromJson(json);
+  factory ApiMessages.fromJson(Map<String, dynamic> json) =>
+      _$ApiMessagesFromJson(json);
 }

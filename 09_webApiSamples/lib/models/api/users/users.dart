@@ -7,15 +7,15 @@ part 'users.freezed.dart';
 part 'users.g.dart';
 
 @freezed
-class Users with _$Users {
+class ApiUsers with _$ApiUsers {
   @JsonSerializable(explicitToJson: true)
-  const factory Users({
+  const factory ApiUsers({
     @JsonKey(name: 'status')
     required String status,
     @JsonKey(name: 'list')
     List<User>? list
-  }) = _Users;
+  }) = _ApiUsers;
 
-  factory Users.fromJson(Map<String, dynamic> json) =>
-      _$UsersFromJson(json);
+  factory ApiUsers.fromJson(Map<String, dynamic> json) =>
+      _$ApiUsersFromJson(json);
 }

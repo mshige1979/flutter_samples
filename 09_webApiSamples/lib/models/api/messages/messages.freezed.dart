@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Messages _$MessagesFromJson(Map<String, dynamic> json) {
-  return _Messages.fromJson(json);
+ApiMessages _$ApiMessagesFromJson(Map<String, dynamic> json) {
+  return _ApiMessages.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Messages {
+mixin _$ApiMessages {
 // ステータス
   @JsonKey(name: 'status')
   String get status => throw _privateConstructorUsedError; // メッセージ一覧
@@ -28,26 +28,27 @@ mixin _$Messages {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MessagesCopyWith<Messages> get copyWith =>
+  $ApiMessagesCopyWith<ApiMessages> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MessagesCopyWith<$Res> {
-  factory $MessagesCopyWith(Messages value, $Res Function(Messages) then) =
-      _$MessagesCopyWithImpl<$Res>;
+abstract class $ApiMessagesCopyWith<$Res> {
+  factory $ApiMessagesCopyWith(
+          ApiMessages value, $Res Function(ApiMessages) then) =
+      _$ApiMessagesCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'status') String status,
       @JsonKey(name: 'list') List<String>? list});
 }
 
 /// @nodoc
-class _$MessagesCopyWithImpl<$Res> implements $MessagesCopyWith<$Res> {
-  _$MessagesCopyWithImpl(this._value, this._then);
+class _$ApiMessagesCopyWithImpl<$Res> implements $ApiMessagesCopyWith<$Res> {
+  _$ApiMessagesCopyWithImpl(this._value, this._then);
 
-  final Messages _value;
+  final ApiMessages _value;
   // ignore: unused_field
-  final $Res Function(Messages) _then;
+  final $Res Function(ApiMessages) _then;
 
   @override
   $Res call({
@@ -68,10 +69,11 @@ class _$MessagesCopyWithImpl<$Res> implements $MessagesCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_MessagesCopyWith<$Res> implements $MessagesCopyWith<$Res> {
-  factory _$$_MessagesCopyWith(
-          _$_Messages value, $Res Function(_$_Messages) then) =
-      __$$_MessagesCopyWithImpl<$Res>;
+abstract class _$$_ApiMessagesCopyWith<$Res>
+    implements $ApiMessagesCopyWith<$Res> {
+  factory _$$_ApiMessagesCopyWith(
+          _$_ApiMessages value, $Res Function(_$_ApiMessages) then) =
+      __$$_ApiMessagesCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'status') String status,
@@ -79,21 +81,21 @@ abstract class _$$_MessagesCopyWith<$Res> implements $MessagesCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MessagesCopyWithImpl<$Res> extends _$MessagesCopyWithImpl<$Res>
-    implements _$$_MessagesCopyWith<$Res> {
-  __$$_MessagesCopyWithImpl(
-      _$_Messages _value, $Res Function(_$_Messages) _then)
-      : super(_value, (v) => _then(v as _$_Messages));
+class __$$_ApiMessagesCopyWithImpl<$Res> extends _$ApiMessagesCopyWithImpl<$Res>
+    implements _$$_ApiMessagesCopyWith<$Res> {
+  __$$_ApiMessagesCopyWithImpl(
+      _$_ApiMessages _value, $Res Function(_$_ApiMessages) _then)
+      : super(_value, (v) => _then(v as _$_ApiMessages));
 
   @override
-  _$_Messages get _value => super._value as _$_Messages;
+  _$_ApiMessages get _value => super._value as _$_ApiMessages;
 
   @override
   $Res call({
     Object? status = freezed,
     Object? list = freezed,
   }) {
-    return _then(_$_Messages(
+    return _then(_$_ApiMessages(
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -109,14 +111,14 @@ class __$$_MessagesCopyWithImpl<$Res> extends _$MessagesCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true)
-class _$_Messages with DiagnosticableTreeMixin implements _Messages {
-  const _$_Messages(
+class _$_ApiMessages with DiagnosticableTreeMixin implements _ApiMessages {
+  const _$_ApiMessages(
       {@JsonKey(name: 'status') required this.status,
       @JsonKey(name: 'list') final List<String>? list})
       : _list = list;
 
-  factory _$_Messages.fromJson(Map<String, dynamic> json) =>
-      _$$_MessagesFromJson(json);
+  factory _$_ApiMessages.fromJson(Map<String, dynamic> json) =>
+      _$$_ApiMessagesFromJson(json);
 
 // ステータス
   @override
@@ -136,14 +138,14 @@ class _$_Messages with DiagnosticableTreeMixin implements _Messages {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Messages(status: $status, list: $list)';
+    return 'ApiMessages(status: $status, list: $list)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Messages'))
+      ..add(DiagnosticsProperty('type', 'ApiMessages'))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('list', list));
   }
@@ -152,7 +154,7 @@ class _$_Messages with DiagnosticableTreeMixin implements _Messages {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Messages &&
+            other is _$_ApiMessages &&
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other._list, _list));
   }
@@ -166,21 +168,22 @@ class _$_Messages with DiagnosticableTreeMixin implements _Messages {
 
   @JsonKey(ignore: true)
   @override
-  _$$_MessagesCopyWith<_$_Messages> get copyWith =>
-      __$$_MessagesCopyWithImpl<_$_Messages>(this, _$identity);
+  _$$_ApiMessagesCopyWith<_$_ApiMessages> get copyWith =>
+      __$$_ApiMessagesCopyWithImpl<_$_ApiMessages>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MessagesToJson(this);
+    return _$$_ApiMessagesToJson(this);
   }
 }
 
-abstract class _Messages implements Messages {
-  const factory _Messages(
+abstract class _ApiMessages implements ApiMessages {
+  const factory _ApiMessages(
       {@JsonKey(name: 'status') required final String status,
-      @JsonKey(name: 'list') final List<String>? list}) = _$_Messages;
+      @JsonKey(name: 'list') final List<String>? list}) = _$_ApiMessages;
 
-  factory _Messages.fromJson(Map<String, dynamic> json) = _$_Messages.fromJson;
+  factory _ApiMessages.fromJson(Map<String, dynamic> json) =
+      _$_ApiMessages.fromJson;
 
   @override // ステータス
   @JsonKey(name: 'status')
@@ -190,6 +193,6 @@ abstract class _Messages implements Messages {
   List<String>? get list => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_MessagesCopyWith<_$_Messages> get copyWith =>
+  _$$_ApiMessagesCopyWith<_$_ApiMessages> get copyWith =>
       throw _privateConstructorUsedError;
 }
