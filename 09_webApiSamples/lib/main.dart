@@ -79,6 +79,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   final api = Api();
                   final res = await api.getMessages();
+                  print(res.status);
+                  print(res.list);
                 },
                 child: Text('GET /api/messages'),
               ),
@@ -88,6 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async {
                   final api = Api();
                   final res = await api.getUsers();
+                  print(res.status);
+                  print(res.list);
                 },
                 child: Text('GET /api/users'),
               ),

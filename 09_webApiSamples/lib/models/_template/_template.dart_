@@ -1,0 +1,20 @@
+/// データクラス用テンプレート
+///  1. クラス名のディレクトリを作成
+///  2. クラス名.dartのファイルを作成し、以下のコードをコピー
+///  3. "flutter pub run build_runner build"をターミナルで実行
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'template.freezed.dart';
+part 'template.g.dart';
+
+@freezed
+class Template with _$Template {
+  @JsonSerializable(explicitToJson: true)
+  const factory Template({
+    required String title,
+  }) = _Template;
+
+  factory Template.fromJson(Map<String, dynamic> json) =>
+      _$TemplateFromJson(json);
+}
