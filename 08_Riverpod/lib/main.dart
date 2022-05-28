@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/app_service.dart';
+import 'providers/counter.dart';
 
 void main() {
   runApp(MultiProvider(
+    // プロバイダーを設定
     providers: [
       ChangeNotifierProvider(create: (_) => AppService()),
+      ChangeNotifierProvider(create: (_) => CounterProvider()),
     ],
     child: const MyApp(),
   ));
