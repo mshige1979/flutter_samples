@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:shelf/shelf_io.dart' as shelf_io;
-import 'package:http/http.dart';
 
 import "server.dart";
 import 'service/api.dart';
-import 'service/api/api_client.dart';
+import 'models/user/user.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
-  _MyAppState createState() => _MyAppState();
+  State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> startServer() async {
     final service = ApiServer();
-    final server = await shelf_io.serve(service.handler, 'localhost', 3000);
+    await shelf_io.serve(service.handler, 'localhost', 3000);
   }
 
   // This widget is the root of your application.
@@ -74,79 +75,59 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final api = Api();
-                  final res = await api.getMessages();
-                  print(res.status);
-                  print(res.list);
-                },
-                child: Text('GET /api/messages'),
-              ),
+            ElevatedButton(
+              onPressed: () async {
+                final api = Api();
+                final res = await api.getMessages();
+                debugPrint(res.status);
+                debugPrint(res.list.toString());
+              },
+              child: const Text('GET /api/messages'),
             ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final api = Api();
-                  final res = await api.getUsers();
-                  print(res.status);
-                  print(res.list);
-                },
-                child: Text('GET /api/users'),
-              ),
+            ElevatedButton(
+              onPressed: () async {
+                final api = Api();
+                final res = await api.getUsers();
+                debugPrint(res.status);
+                debugPrint(res.list.toString());
+              },
+              child: const Text('GET /api/users'),
             ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final api = Api();
-                  final res = await api.getUser(1);
-                  print(res.status);
-                  print(res.user);
-                },
-                child: Text('GET /api/user/1'),
-              ),
+            ElevatedButton(
+              onPressed: () async {
+                final api = Api();
+                final res = await api.getUser(1);
+                debugPrint(res.status);
+                debugPrint(res.user.toString());
+              },
+              child: const Text('GET /api/user/1'),
             ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final api = ApiClient();
-                  final res = await api.delete("/api/user/1",
-                          headers: <String, String>{"api-key": "aaaaaa"})
-                      as Response;
-                  print("status: ${res.statusCode}");
-                  print("body: ${res.body}");
-                },
-                child: Text('DELETE /api/user/1'),
-              ),
+            ElevatedButton(
+              onPressed: () async {
+                final api = Api();
+                final res = await api.deleteUser(1);
+                debugPrint(res.status);
+                debugPrint(res.user.toString());
+              },
+              child: const Text('DELETE /api/user/1'),
             ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final api = ApiClient();
-                  final res = await api.post("/api/user",
-                      headers: <String, String>{"api-key": "aaaaaa"},
-                      body: <String, String>{"aaa": "111", "bbb": "222"})
-                  as Response;
-                  print("status: ${res.statusCode}");
-                  print("body: ${res.body}");
-                },
-                child: Text('POST /api/user'),
-              ),
+            ElevatedButton(
+              onPressed: () async {
+                final api = Api();
+                final res = await api.postUser(const User(id: 1, name: "1111"));
+                debugPrint(res.status);
+                debugPrint(res.user.toString());
+              },
+              child: const Text('POST /api/user'),
             ),
-            Container(
-              child: ElevatedButton(
-                onPressed: () async {
-                  final api = ApiClient();
-                  final res = await api.put("/api/user/1",
-                      headers: <String, String>{"api-key": "aaaaaa"},
-                      body: <String, String>{"aaa": "333", "bbb": "444"})
-                  as Response;
-                  print("status: ${res.statusCode}");
-                  print("body: ${res.body}");
-                },
-                child: Text('PUT /api/user/1'),
-              ),
+            ElevatedButton(
+              onPressed: () async {
+                final api = Api();
+                final res = await api.putUser(const User(id: 1, name: "1111"));
+                debugPrint(res.status);
+                debugPrint(res.user.toString());
+              },
+              child: const Text('PUT /api/user/1'),
             ),
           ],
         ),

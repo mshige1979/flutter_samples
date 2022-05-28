@@ -48,16 +48,34 @@ class _Api {
       request.readAsString().then((String body) {
         print("body: $body");
       });
-      return Response.ok('hello post');
+      return Response.ok(
+        json.encode({
+          "status": "0",
+          "user": {"id": 1, "name": "aaaa"}
+        }),
+        headers: {'content-type': 'application/json'},
+      );
     });
     router.put('/user/<user>', (Request request, String user) {
       request.readAsString().then((String body) {
         print("body: $body");
       });
-      return Response.ok('hello put $user');
+      return Response.ok(
+        json.encode({
+          "status": "0",
+          "user": {"id": 1, "name": "aaaa"}
+        }),
+        headers: {'content-type': 'application/json'},
+      );
     });
     router.delete('/user/<user>', (Request request, String user) {
-      return Response.ok('delete $user');
+      return Response.ok(
+        json.encode({
+          "status": "0",
+          "user": {"id": 1, "name": "aaaa"}
+        }),
+        headers: {'content-type': 'application/json'},
+      );
     });
     router.all('/<ignored|.*>', (Request request) => Response.notFound('null'));
 

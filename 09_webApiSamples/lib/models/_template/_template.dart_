@@ -2,6 +2,8 @@
 ///  1. クラス名のディレクトリを作成
 ///  2. クラス名.dartのファイルを作成し、以下のコードをコピー
 ///  3. "flutter pub run build_runner build"をターミナルで実行
+
+// ignore_for_file: invalid_annotation_target
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
