@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'password_edit.dart';
+
 class PasswordDetailPage extends StatefulWidget {
   const PasswordDetailPage({Key? key, this.title, this.password})
       : super(key: key);
@@ -72,7 +74,14 @@ class _PasswordDetailPageState extends State<PasswordDetailPage> {
               alignment: Alignment.bottomCenter,
               child: ElevatedButton(
                 child: Text('編集'),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return PasswordEditPage(
+                        title: widget.title,
+                        password: widget.password,
+                        edit: true);
+                  }));
+                },
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(250, 50),
                 ),

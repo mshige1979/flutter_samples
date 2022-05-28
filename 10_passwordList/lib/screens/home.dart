@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:password_list/screens/password_detail.dart';
 
 import "../passwordItem.dart";
+import 'password_edit.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -46,8 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
         itemCount: passwordList.length,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return PasswordEditPage();
+          }));
+        },
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
