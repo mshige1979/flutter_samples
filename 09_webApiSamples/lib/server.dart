@@ -51,7 +51,6 @@ class _Api {
       return Response.ok(
         json.encode({
           "status": "0",
-          "user": {"id": 1, "name": "aaaa"}
         }),
         headers: {'content-type': 'application/json'},
       );
@@ -63,7 +62,6 @@ class _Api {
       return Response.ok(
         json.encode({
           "status": "0",
-          "user": {"id": 1, "name": "aaaa"}
         }),
         headers: {'content-type': 'application/json'},
       );
@@ -72,7 +70,6 @@ class _Api {
       return Response.ok(
         json.encode({
           "status": "0",
-          "user": {"id": 1, "name": "aaaa"}
         }),
         headers: {'content-type': 'application/json'},
       );

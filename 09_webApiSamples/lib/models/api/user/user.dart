@@ -12,8 +12,8 @@ class ApiUser with _$ApiUser {
   const factory ApiUser({
     @JsonKey(name: 'status')
     required String status,
-    @JsonKey(name: 'user')
-    required User user,
+    @JsonKey(name: 'user', disallowNullValue: true)
+    User? user,
   }) = _ApiUser;
 
   factory ApiUser.fromJson(Map<String, dynamic> json) =>

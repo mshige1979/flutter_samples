@@ -22,8 +22,8 @@ ApiUser _$ApiUserFromJson(Map<String, dynamic> json) {
 mixin _$ApiUser {
   @JsonKey(name: 'status')
   String get status => throw _privateConstructorUsedError;
-  @JsonKey(name: 'user')
-  User get user => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user', disallowNullValue: false)
+  User? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,9 +36,9 @@ abstract class $ApiUserCopyWith<$Res> {
       _$ApiUserCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'status') String status,
-      @JsonKey(name: 'user') User user});
+      @JsonKey(name: 'user', disallowNullValue: false) User? user});
 
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -62,13 +62,17 @@ class _$ApiUserCopyWithImpl<$Res> implements $ApiUserCopyWith<$Res> {
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
     ));
   }
 
   @override
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
+  $UserCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UserCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value));
     });
   }
@@ -82,10 +86,10 @@ abstract class _$$_ApiUserCopyWith<$Res> implements $ApiUserCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(name: 'status') String status,
-      @JsonKey(name: 'user') User user});
+      @JsonKey(name: 'user', disallowNullValue: false) User? user});
 
   @override
-  $UserCopyWith<$Res> get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -110,7 +114,7 @@ class __$$_ApiUserCopyWithImpl<$Res> extends _$ApiUserCopyWithImpl<$Res>
       user: user == freezed
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as User,
+              as User?,
     ));
   }
 }
@@ -121,7 +125,7 @@ class __$$_ApiUserCopyWithImpl<$Res> extends _$ApiUserCopyWithImpl<$Res>
 class _$_ApiUser with DiagnosticableTreeMixin implements _ApiUser {
   const _$_ApiUser(
       {@JsonKey(name: 'status') required this.status,
-      @JsonKey(name: 'user') required this.user});
+      @JsonKey(name: 'user', disallowNullValue: false) this.user});
 
   factory _$_ApiUser.fromJson(Map<String, dynamic> json) =>
       _$$_ApiUserFromJson(json);
@@ -130,8 +134,8 @@ class _$_ApiUser with DiagnosticableTreeMixin implements _ApiUser {
   @JsonKey(name: 'status')
   final String status;
   @override
-  @JsonKey(name: 'user')
-  final User user;
+  @JsonKey(name: 'user', disallowNullValue: false)
+  final User? user;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -176,8 +180,9 @@ class _$_ApiUser with DiagnosticableTreeMixin implements _ApiUser {
 
 abstract class _ApiUser implements ApiUser {
   const factory _ApiUser(
-      {@JsonKey(name: 'status') required final String status,
-      @JsonKey(name: 'user') required final User user}) = _$_ApiUser;
+          {@JsonKey(name: 'status') required final String status,
+          @JsonKey(name: 'user', disallowNullValue: false) final User? user}) =
+      _$_ApiUser;
 
   factory _ApiUser.fromJson(Map<String, dynamic> json) = _$_ApiUser.fromJson;
 
@@ -185,8 +190,8 @@ abstract class _ApiUser implements ApiUser {
   @JsonKey(name: 'status')
   String get status => throw _privateConstructorUsedError;
   @override
-  @JsonKey(name: 'user')
-  User get user => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user', disallowNullValue: false)
+  User? get user => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_ApiUserCopyWith<_$_ApiUser> get copyWith =>
