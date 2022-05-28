@@ -3,7 +3,8 @@ import 'package:shelf/shelf_io.dart' as shelf_io;
 import 'package:http/http.dart';
 
 import "server.dart";
-import 'service/api_client.dart';
+import 'service/api.dart';
+import 'service/api/api_client.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> startServer() async {
-    final service = Api();
+    final service = ApiServer();
     final server = await shelf_io.serve(service.handler, 'localhost', 3000);
   }
 
@@ -76,12 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               child: ElevatedButton(
                 onPressed: () async {
-                  final api = ApiClient();
-                  final res = await api.get("/api/messages",
-                      headers: <String, String>{"api-key": "aaaaaa"})
-                  as Response;
-                  print("status: ${res.statusCode}");
-                  print("body: ${res.body}");
+                  final api = Api();
+                  final res = await api.getMessages();
                 },
                 child: Text('GET /api/messages'),
               ),
@@ -89,12 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               child: ElevatedButton(
                 onPressed: () async {
-                  final api = ApiClient();
-                  final res = await api.get("/api/users",
-                      headers: <String, String>{"api-key": "aaaaaa"})
-                  as Response;
-                  print("status: ${res.statusCode}");
-                  print("body: ${res.body}");
+                  final api = Api();
+                  final res = await api.getUsers();
                 },
                 child: Text('GET /api/users'),
               ),

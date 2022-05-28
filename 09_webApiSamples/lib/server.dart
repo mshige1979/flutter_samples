@@ -1,9 +1,8 @@
-import 'dart:async' show Future;
 import 'dart:convert';
 import 'package:shelf_router/shelf_router.dart';
 import 'package:shelf/shelf.dart';
 
-class Api {
+class ApiServer {
   Handler get handler {
     final router = Router();
     router.mount('/api/', _Api().router);
@@ -12,10 +11,6 @@ class Api {
 }
 
 class _Api {
-  Future<Response> _messages(Request request) async {
-    return Response.ok('[]');
-  }
-
   // テスト用の仮API
   Router get router {
     final router = Router();
@@ -51,13 +46,13 @@ class _Api {
     });
     router.post('/user', (Request request) {
       request.readAsString().then((String body) {
-        print("body: ${body}");
+        print("body: $body");
       });
       return Response.ok('hello post');
     });
     router.put('/user/<user>', (Request request, String user) {
       request.readAsString().then((String body) {
-        print("body: ${body}");
+        print("body: $body");
       });
       return Response.ok('hello put $user');
     });

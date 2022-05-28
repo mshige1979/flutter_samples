@@ -2,24 +2,17 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'api/api_client_base.dart';
+import 'api_client_base.dart';
 import 'dart:io';
 
 class ApiClient implements ApiClientBase {
-  static final ApiClient _instance = ApiClient._internal();
-
-  factory ApiClient() {
-    return _instance;
-  }
-
-  ApiClient._internal();
 
   // ベースURL
   static const String baseUrl = 'http://localhost:3000';
 
   // ヘッダー情報
   @protected
-  Map<String, String> getHeaders(
+  Map<String, String> _getHeaders(
     Map<String, String>? headers,
   ) {
     // base
@@ -61,7 +54,7 @@ class ApiClient implements ApiClientBase {
     // URL生成
     Uri url = _createUrl(endpoint, queryParameters: queryParameters);
     // ヘッダーを取得
-    final headerParams = getHeaders(headers);
+    final headerParams = _getHeaders(headers);
     // GET
     final http.Response response = await http.get(url, headers: headerParams);
     return response;
@@ -77,7 +70,7 @@ class ApiClient implements ApiClientBase {
     // URL生成
     Uri url = _createUrl(endpoint);
     // ヘッダーを取得
-    final headerParams = getHeaders(headers);
+    final headerParams = _getHeaders(headers);
     final jsonBody = jsonEncode(body);
     // POST
     final http.Response response =
@@ -95,7 +88,7 @@ class ApiClient implements ApiClientBase {
     // URL生成
     Uri url = _createUrl(endpoint);
     // ヘッダーを取得
-    final headerParams = getHeaders(headers);
+    final headerParams = _getHeaders(headers);
     final jsonBody = jsonEncode(body);
     // PUT
     final http.Response response =
@@ -113,7 +106,7 @@ class ApiClient implements ApiClientBase {
     // URL生成
     Uri url = _createUrl(endpoint, queryParameters: queryParameters);
     // ヘッダーを取得
-    final headerParams = getHeaders(headers);
+    final headerParams = _getHeaders(headers);
     // GET
     final http.Response response =
         await http.delete(url, headers: headerParams);
