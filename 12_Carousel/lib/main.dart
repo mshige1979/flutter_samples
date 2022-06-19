@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Scaffold(
         body: Center(
-          child: Column(children: [
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
             CarouselSlider(
               items: imageList,
               carouselController: _controller,
