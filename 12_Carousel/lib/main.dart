@@ -63,13 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     ),
   ];
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     width: 12.0,
                     height: 12.0,
                     margin:
-                        EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                        const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: (Theme.of(context).brightness == Brightness.dark
@@ -121,23 +114,18 @@ class _MyHomePageState extends State<MyHomePage> {
               Flexible(
                 child: ElevatedButton(
                   onPressed: () => _controller.previousPage(),
-                  child: Text('<-'),
+                  child: const Text('<-'),
                 ),
               ),
               Flexible(
                 child: ElevatedButton(
                   onPressed: () => _controller.nextPage(),
-                  child: Text('->'),
+                  child: const Text('->'),
                 ),
               ),
             ])
           ]),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
