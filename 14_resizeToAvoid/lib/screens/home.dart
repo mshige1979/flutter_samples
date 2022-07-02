@@ -78,12 +78,18 @@ class _MyHomePageState extends State<MyHomePage> {
                         builder: (BuildContext dialogContext) {
                           return AlertDialog(
                             content: Container(
-                              height: 100,
+                              height: 200,
                               child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
+                                    TextButton(
+                                        onPressed: () {
+                                          // キーボードのフォーカスをかいじょ
+                                          FocusScope.of(context).requestFocus(FocusNode());
+                                        },
+                                        child: Text("Unfocus")),
                                     TextField(),
                                     Text(
                                       "How Would You Rate Our App?",
