@@ -31,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   double _top1 = -1000;
+  double _top2 = -1000;
   double _top3 = 110;
   double _left3 = 30;
   double _top4 = 160;
@@ -52,11 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: ElevatedButton(
               onPressed: () {
                 setState(() {
-                  if (_top1 <= -1000) {
-                    _top1 = 0;
-                  } else {
-                    _top1 = -1000;
-                  }
+                  _top1 = 0;
+                  _top2 = 200;
                 });
               },
               child: Text("sample1"),
@@ -104,30 +102,44 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("sample4"),
             ),
           ),
+          AnimatedContainer(
+            duration: Duration(milliseconds: 1),
+            child: Positioned(
+                top: _top1,
+                left: 0,
+                child: InkWell(
+                  onTap: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                    setState(() {
+                      _top1 = -1000;
+                      _top2 = -1000;
+                    });
+                  },
+                  child: Container(
+                    width: size.width,
+                    height: size.height,
+                    color: Colors.black.withOpacity(0.3),
+                  ),
+                )),
+          ),
           AnimatedPositioned(
             duration: Duration(milliseconds: 500),
-            top: _top1,
-            left: 0,
+            top: _top2,
+            left: 110,
             child: Container(
-              width: size.width,
-              height: size.height,
+              width: 200,
+              height: 200,
               color: Colors.amber,
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    _top1 = -1000;
-                  });
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextField(),
-                    TextButton(
-                      child: Text("test"),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextField(),
+                  TextButton(
+                    child: Text("test"),
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ),
           ),
